@@ -1,0 +1,10 @@
+{
+  "type": "button",
+  "settings": {
+    "text": "Click me",
+    "bgColor": "#000000",
+    "textColor": "#ffffff",
+    "link": "",
+    "newTab": false
+  }
+}

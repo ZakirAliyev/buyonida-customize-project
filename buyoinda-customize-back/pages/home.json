@@ -1,0 +1,59 @@
+
+{
+  "page": "home",
+  "sections": [
+    {
+      "id": 1,
+      "type": "section",
+      "settings": {},
+      "blocks": [
+        {
+          "id": "cecf3d50-ad3b-4ffb-86f1-ed71c1af6270",
+          "type": "group",
+          "template": "<div\n        class=\"group\"\n        style=\"\n                display: flex;\n                flex-direction: {{ flexDirection }};\n                gap: {{ gap }}px;\n                align-items: {{ alignItems }};\n                justify-content: {{ justifyContent }};\n                padding: {{ paddingTop }}px {{ paddingRight }}px {{ paddingBottom }}px {{ paddingLeft }}px;\n                border-radius: {{ radius }}px;\n                \"\n>\n    {{ children }}\n</div>\n",
+          "settings": {
+            "direction": "horizontal",
+            "alignment": "right",
+            "position": "right",
+            "gap": 100,
+            "width": "fit",
+            "mobileWidth": "fit",
+            "height": "fit",
+            "paddingTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "border": "none",
+            "radius": 0,
+            "link": "",
+            "newTab": false
+          },
+          "children": [
+            {
+              "id": "aa0a3faa-ffb5-41a6-a500-7d55bb518986",
+              "type": "paragraph",
+              "template": "<p style=\"font-size: {{ fontSize }}; color: {{ color }};\">\n    {{ text }}\n</p>\n",
+              "settings": {
+                "text": "Paragraph",
+                "fontSize": "16px",
+                "color": "#000000"
+              }
+            },
+            {
+              "id": "64ad6edc-9388-4274-b71a-42f3e7a9d73e",
+              "type": "button",
+              "template": "<a\n        href=\"{{ link }}\"\n        target=\"{{ target }}\"\n        style=\"\n                display: inline-block;\n                padding: 12px 20px;\n                background: {{ bgColor }};\n                color: {{ textColor }};\n                border-radius: 6px;\n                text-decoration: none;\n                cursor: pointer;\n                \"\n>\n    {{ text }}\n</a>\n",
+              "settings": {
+                "text": "Click me",
+                "bgColor": "#000000",
+                "textColor": "#ffffff",
+                "link": "https://youtube.com/",
+                "newTab": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

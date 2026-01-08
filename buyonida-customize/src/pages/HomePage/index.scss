@@ -1,0 +1,57 @@
+.builder-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.preview-area {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+.preview-canvas a {
+  pointer-events: none;
+}
+
+.section-wrapper {
+  position: relative;
+  margin: 8px 0;
+
+  .section-overlay {
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  &:hover .section-overlay,
+  &.selected .section-overlay {
+    border-color: #2563eb;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: none;
+    z-index: 5;
+  }
+
+  &:hover .delete-btn,
+  &.selected .delete-btn {
+    display: block;
+  }
+}
+
+.group {
+  border: 0.5px dashed #ccc;
+  padding: 12px;
+}

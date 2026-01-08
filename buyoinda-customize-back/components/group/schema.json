@@ -1,0 +1,20 @@
+{
+  "type": "group",
+  "settings": {
+    "direction": "vertical",
+    "alignment": "left",
+    "position": "center",
+    "gap": 12,
+    "width": "fit",
+    "mobileWidth": "fit",
+    "height": "fit",
+    "paddingTop": 0,
+    "paddingBottom": 0,
+    "paddingLeft": 0,
+    "paddingRight": 0,
+    "border": "none",
+    "radius": 0,
+    "link": "",
+    "newTab": false
+  }
+}
