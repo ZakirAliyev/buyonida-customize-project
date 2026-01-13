@@ -1,0 +1,125 @@
+#schemeInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  #schemeInputName {
+    font-size: 12px;
+    color: #6B6B6B;
+  }
+
+  .schemeInputBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 12px 0 8px;
+    height: 36px;
+    border: 1px solid #CFCFCF;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    max-width: 160px;
+    width: 100%;
+  }
+
+  .schemeIcon {
+    width: 40px;
+    height: 26px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex-shrink: 0;
+    border: 1px solid #DEDEDE;
+
+    .aa {
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .bars {
+      display: flex;
+      gap: 3px;
+
+      span {
+        width: 10px;
+        height: 3px;
+        border-radius: 3px;
+        background: currentColor;
+      }
+
+      span:last-child {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .schemeName {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .schemeDropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: #fff;
+    border-radius: 8px;
+    z-index: 20;
+    width: max-content;
+    flex-shrink: 0;
+    box-shadow: 0 1px 1.2px 0 #65656512;
+    border: 1px solid #E9E9E9;
+
+    .schemeDropdownWrapper {
+      padding: 8px;
+    }
+  }
+
+  .schemeItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all .3s ease;
+
+    .schemeName {
+      color: #3C3C3C;
+    }
+
+    &:hover {
+      background: #f6f6f6;
+    }
+
+    &.active {
+      background: #f4f4f4;
+    }
+  }
+
+  .schemeFooter {
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #6B6B6B;
+    border-top: 1px solid #eee;
+    background: #F8F8F8;
+
+    p {
+      color: #262626;
+      display: inline;
+    }
+  }
+
+  .confirm {
+    position: absolute;
+    right: 20px;
+  }
+}

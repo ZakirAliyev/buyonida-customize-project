@@ -1,57 +1,100 @@
-.builder-layout {
-  display: flex;
-  height: 100vh;
-}
+#homePage {
+  .builder-layout {
+    display: flex;
+    height: 100vh;
+  }
 
-.preview-area {
-  flex: 1;
-  padding: 20px;
-  overflow: auto;
-}
+  .preview-area {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+  }
 
-.preview-canvas a {
-  pointer-events: none;
-}
-
-.section-wrapper {
-  position: relative;
-  margin: 8px 0;
-
-  .section-overlay {
-    position: absolute;
-    inset: 0;
-    border: 2px solid transparent;
-    border-radius: 6px;
+  .preview-canvas a {
     pointer-events: none;
   }
 
-  &:hover .section-overlay,
-  &.selected .section-overlay {
-    border-color: #2563eb;
+  .section-wrapper {
+    position: relative;
+    margin: 8px 0;
+
+    .section-overlay {
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+
+    &:hover .section-overlay,
+    &.selected .section-overlay {
+      border-color: #2563eb;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: none;
+      z-index: 5;
+    }
+
+    &:hover .delete-btn,
+    &.selected .delete-btn {
+      display: block;
+    }
   }
 
-  .delete-btn {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: #dc2626;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: none;
-    z-index: 5;
+  .group {
+    border: 0.5px dashed #ccc;
+    padding: 12px;
   }
 
-  &:hover .delete-btn,
-  &.selected .delete-btn {
-    display: block;
-  }
-}
+  .panelWrapper {
+    display: flex;
+    height: calc(100vh - 64px);
+    font-size: 14px;
 
-.group {
-  border: 0.5px dashed #ccc;
-  padding: 12px;
+    @media (max-width: 992px) {
+      font-size: 12px;
+    }
+
+    .orta {
+      width: 100%;
+      padding: 8px;
+      background: #F4F4F4;
+
+      .ortaWrapper {
+        background: white;
+        border-radius: 16px;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .rightPanel {
+      @media (max-width: 992px) {
+        width: 100% !important;
+      }
+    }
+
+    .panel {
+      width: 300px;
+      flex-shrink: 0;
+      padding: 16px;
+      border-right: 1px solid #EEF3F1;
+
+      &:last-child {
+        border-left: 1px solid #EEF3F1;
+        border-right: none;
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import './index.scss'
-import { useState } from "react";
-import { renderLiquid } from "../../theme/engine/renderLiquid.js";
+import {useState} from "react";
+import {renderLiquid} from "../../theme/engine/renderLiquid.js";
 import {
     useGetHomePageQuery,
     useAddComponentMutation,
@@ -10,15 +10,26 @@ import SettingsPanel from "../../components/SettingsPanel/index.jsx";
 import TopLoadingBar from "../../components/TopLoadingBar/index.jsx";
 import {EditorLoadingProvider, useEditorLoading} from "../../context/EditorLoadingContext/index.jsx";
 import HomePageNavbar from "../../components/HomePageNavbar/index.jsx";
+import TabMenu from "../../components/CustomizeStoreAdminComponents/TabMenu/index.jsx";
+import SelectOption from "../../components/CustomizeStoreAdminComponents/SelectOption/index.jsx";
+import CountSlider from "../../components/CustomizeStoreAdminComponents/CountSlider/index.jsx";
+import ToggleSwitcher from "../../components/CustomizeStoreAdminComponents/ToggleSwitcher/index.jsx";
+import UploadMedia from "../../components/CustomizeStoreAdminComponents/UploadMedia/index.jsx";
+import ColorPicker from "../../components/CustomizeStoreAdminComponents/ColorPicker/index.jsx";
+import SchemeInput from "../../components/CustomizeStoreAdminComponents/SchemeInput/index.jsx";
+import TextInput from "../../components/CustomizeStoreAdminComponents/TextInput/index.jsx";
+import TextEditor from "../../components/CustomizeStoreAdminComponents/TextEditor/index.jsx";
 
 function HomePageInner() {
-    const { data, isLoading, isFetching } = useGetHomePageQuery();
+    const {data, isLoading, isFetching} = useGetHomePageQuery();
     const [addComponent, addState] = useAddComponentMutation();
     const [deleteBlock, deleteState] = useDeleteBlockMutation();
     const [selectedId, setSelectedId] = useState(null);
 
-    const { isBusy } = useEditorLoading();
+    const [gap, setGap] = useState(0);
+    const [scheme, setScheme] = useState(1);
 
+    const {isBusy} = useEditorLoading();
     const loading =
         isLoading ||
         isFetching ||
@@ -80,9 +91,30 @@ function HomePageInner() {
     };
 
     return (
-        <>
-            <TopLoadingBar loading={loading} />
+        <section id={"homePage"}>
+            <TopLoadingBar loading={loading}/>
             <HomePageNavbar/>
+
+            <div className={"panelWrapper"}>
+                <div className={"panel leftPanel"}>Sol</div>
+                <div className={"orta"}>
+                    <div className={"ortaWrapper"}>
+
+                    </div>
+                </div>
+                <div className={"panel rightPanel"}>
+                    <TabMenu name={"Alignment"} props={['left', 'center', 'right']}/>
+                    <TabMenu name={"Direction"} props={['vertical', 'horizontal']}/>
+                    <SelectOption name={"Type"} props={['grid', 'carrousel', 'editorial']}/>
+                    <CountSlider name="Gap" value={gap} min={0} max={100} onChange={setGap} type={"px"}/>
+                    <ToggleSwitcher name="Background overlay" defaultValue={true}/>
+                    <UploadMedia/>
+                    <ColorPicker name="Background" value="#F5F5F5" onChange={(color) => console.log(color)}/>
+                    <SchemeInput name={"Color scheme"} value={scheme} onChange={(id) => setScheme(id)}/>
+                    <TextInput name={"Text"} isIcon isDropdown/>
+                    {/*<TextEditor name="Description" placeholder="New arrivals" disabled={false}/>*/}
+                </div>
+            </div>
 
             {/*<div className="builder-layout">*/}
             {/*    <div className="preview-area">*/}
@@ -110,14 +142,14 @@ function HomePageInner() {
 
             {/*    <SettingsPanel block={selectedBlock} />*/}
             {/*</div>*/}
-        </>
+        </section>
     );
 }
 
 function HomePage() {
     return (
         <EditorLoadingProvider>
-            <HomePageInner />
+            <HomePageInner/>
         </EditorLoadingProvider>
     );
 }

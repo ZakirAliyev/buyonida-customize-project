@@ -1,0 +1,160 @@
+#colorPicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  position: relative;
+
+  #countSliderName {
+    font-size: 12px;
+    color: #6b6b6b;
+  }
+
+  .colorInputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    cursor: pointer;
+    background: #fff;
+    min-width: 160px;
+    justify-content: space-between;
+
+    input {
+      border: none;
+      outline: none;
+      font-size: 12px;
+      width: 90px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .colorPreview {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+    }
+  }
+
+  .pickerPopover {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 20;
+    width: max-content;
+    flex-shrink: 0;
+    box-shadow: 0 1px 1.2px 0 #65656512;
+    border: 1px solid #E9E9E9;
+  }
+
+  .pickerBody {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+  }
+
+  .svSquare {
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    cursor: crosshair;
+    background-image: linear-gradient(to top, black, transparent),
+    linear-gradient(to right, white, transparent);
+    position: relative;
+  }
+
+  .svCursor {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    transform: translate(-7px, -7px);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .6);
+  }
+
+  .hueSlider,
+  .alphaSlider {
+    width: 12px;
+    height: 140px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    border: 1px solid #f3f3f3;
+  }
+
+  .hueSlider {
+    background: linear-gradient(
+                    to bottom,
+                    red,
+                    yellow,
+                    lime,
+                    cyan,
+                    blue,
+                    magenta,
+                    red
+    );
+  }
+
+  .hueCursor,
+  .alphaCursor {
+    position: absolute;
+    left: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: transparent;
+    transform: translateY(-4px);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5),
+    inset 0 0 0 2px #fff;
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    width: max-content;
+  }
+
+  .pickedColorBox {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+  }
+
+  .hexInput,
+  .alphaInput {
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid #cfcfcf;
+    padding: 0 6px;
+    font-size: 12px;
+    outline: none;
+  }
+
+  .hexInput {
+    width: 142px;
+  }
+
+  .alphaInput {
+    width: 44px;
+    text-align: center;
+  }
+
+  .percent {
+    font-size: 12px;
+    color: #555;
+  }
+}
