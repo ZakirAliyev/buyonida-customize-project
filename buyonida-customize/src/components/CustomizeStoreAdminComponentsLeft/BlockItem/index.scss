@@ -1,0 +1,62 @@
+#blockItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+
+  &.active {
+    > .blockItemHeader {
+      background: #1f6fff;
+      color: #fff;
+
+      .blockLabel {
+        color: #fff;
+      }
+
+      .blockIcon {
+        opacity: 1;
+      }
+    }
+  }
+
+  .blockItemHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px;
+    border-radius: 8px;
+
+    &:hover {
+      background: #f4f4f4;
+    }
+  }
+
+  .chevron {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+    opacity: 0.7;
+
+    &.open {
+      transform: rotate(0);
+    }
+
+    &:not(.open) {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .blockLabel {
+    font-size: 12px;
+    color: #525252;
+  }
+
+  .blockChildren {
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}

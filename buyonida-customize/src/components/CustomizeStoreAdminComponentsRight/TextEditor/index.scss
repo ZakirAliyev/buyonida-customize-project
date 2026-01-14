@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+#textEditor {
+  margin-bottom: 16px;
+
+  .ql-toolbar {
+    border-radius: 8px 8px 0 0 !important;
+    background: #f8f8f8 !important;
+    border: 1px solid #CFCFCF !important;
+  }
+
+  .ql-toolbar,
+  .ql-formats {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  .ql-container {
+    border-radius: 0 0 8px 8px !important;
+    border: 1px solid #CFCFCF !important;
+    border-top: none !important;
+  }
+
+  .ql-picker-label {
+    width: 86px !important;
+  }
+
+  .ql-formats:first-child {
+    width: 86px !important;
+  }
+
+  .ql-editor {
+    min-height: 42px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    caret-color: #000;
+    padding: 10px 16px !important;
+  }
+
+  .ql-container.ql-snow:focus-within .ql-editor {
+    caret-color: #000;
+  }
+
+  /* Selection görünməsi */
+  .ql-editor ::selection {
+    background: #cce5ff;
+  }
+
+  .ql-editing {
+    position: absolute !important;
+    right: 0 !important;
+    border-radius: 8px !important;
+    width: max-content !important;
+    left: unset !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px !important;
+
+    input {
+      border-radius: 8px !important;
+      height: 30px !important;
+      padding: 0 16px !important;
+      outline: none !important;
+      margin-top: 12px !important;
+
+      &::placeholder {
+        display: none !important;
+      }
+    }
+  }
+
+  .ql-remove {
+    display: none !important;
+  }
+
+  .ql-tooltip {
+    font-size: 14px !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .ql-tooltip:before {
+    line-height: 1 !important;
+  }
+
+  .ql-action:after {
+    margin: 0 !important;
+    height: 28px !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: max-content !important;
+    border-radius: 8px !important;
+    margin-top: 8px !important;
+    font-size: 12px !important;
+    background: #353535 !important;
+    color: #fff !important;
+  }
+
+  .ql-picker-label {
+    font-size: 12px !important;
+  }
+
+  .ql-bold, .ql-italic, .ql-underline, .ql-list, .ql-link {
+    width: max-content !important;
+
+    svg {
+      width: 14px !important;
+    }
+  }
+
+  .ql-snow .ql-tooltip input[type="text"]::placeholder {
+    opacity: 0;
+  }
+
+  .ql-editor.ql-blank::before {
+    font-style: normal !important;
+    color: #9a9a9a !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 12px !important;
+  }
+}
