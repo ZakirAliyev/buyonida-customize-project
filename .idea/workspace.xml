@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddcf8072-241f-4e4b-81d9-35ed217f03d9" name="Changes" comment="" />
+    <list default="true" id="ddcf8072-241f-4e4b-81d9-35ed217f03d9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buyonida-customize/src/components/CustomizeStoreAdminComponentsRight/TextEditor/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/buyonida-customize/src/components/CustomizeStoreAdminComponentsRight/TextEditor/index.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,28 +30,34 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/zakiraliyev/Desktop/buyonida-customize-project/buyonida-customize/src/components/SettingsPanel",
+    "last_opened_file_path": "/Users/zakiraliyev/Desktop/buyonida-customize-project/buyonida-customize/src/assets/block-icons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/zakiraliyev/Desktop/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/buyonida-customize/src/assets/block-icons" />
+      <recent name="$PROJECT_DIR$/buyonida-customize/src/components/CustomizeStoreAdminComponents" />
+      <recent name="$PROJECT_DIR$/buyonida-customize/src/components/CustomizeStoreAdminComponents/ToogleSwitcher" />
       <recent name="$PROJECT_DIR$/buyonida-customize/src/components/SettingsPanel" />
       <recent name="$PROJECT_DIR$/buyoinda-customize-back/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/buyonida-customize/src/assets/icons" />
+      <recent name="$PROJECT_DIR$/buyonida-customize/src/assets/block-icons" />
       <recent name="$PROJECT_DIR$/buyonida-customize/src/assets" />
-      <recent name="$PROJECT_DIR$/buyonida-customize/src/pages" />
-      <recent name="$PROJECT_DIR$/buyonida-customize/src/pages/UserPages" />
-      <recent name="$PROJECT_DIR$/buyoinda-customize-back/models/pages" />
+      <recent name="$PROJECT_DIR$/buyonida-customize/src/assets/\" />
+      <recent name="$PROJECT_DIR$/buyonida-customize" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -75,7 +85,12 @@
       <workItem from="1767785962116" duration="156000" />
       <workItem from="1767843828776" duration="5129000" />
       <workItem from="1767853010763" duration="7715000" />
-      <workItem from="1767871843372" duration="1106000" />
+      <workItem from="1767871843372" duration="4298000" />
+      <workItem from="1767932166781" duration="17090000" />
+      <workItem from="1767961503878" duration="1386000" />
+      <workItem from="1768277052052" duration="23715000" />
+      <workItem from="1768363633285" duration="5072000" />
+      <workItem from="1768371546265" duration="21009000" />
     </task>
     <servers />
   </component>
