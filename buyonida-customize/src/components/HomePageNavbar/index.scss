@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 12px;
 
     @media (max-width: 992px) {
       font-size: 12px;
@@ -63,9 +63,10 @@
   }
 
   .mid {
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
 
     @media (max-width: 992px) {
@@ -79,14 +80,16 @@
     gap: 8px;
 
     .button {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #EEF9FC;
       border-radius: 8px;
       border: 0.5px solid #D7D7D7;
+      box-shadow: 1px 0.95px 1.51px 0px #D8D8D840;
+
     }
 
     .button1 {
@@ -103,11 +106,10 @@
       border-radius: 6px;
       overflow: hidden;
       border: 0.5px solid #DFDFDF;
-      box-shadow: 0 0.5px 0.6px 0 #96969640;
 
       .button {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border: 0.5px solid transparent;
         background: #EEF9FC;
         border-radius: 0;
@@ -134,7 +136,7 @@
     color: white;
     width: max-content;
     padding: 0 20px;
-    font-size: 14px;
+    font-size: 12px;
     height: 32px;
     border: 0.5px solid #D7D7D7;
     border-radius: 8px;
@@ -146,8 +148,8 @@
 
 
   .button3 {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,7 +200,7 @@
     color: white;
     width: max-content !important;
     padding: 0 20px;
-    font-size: 14px;
+    font-size: 12px;
     height: 32px;
     border: 0.5px solid #D7D7D7;
     border-radius: 8px;

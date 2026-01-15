@@ -59,7 +59,7 @@
 
   .panelWrapper {
     display: flex;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 60px);
     font-size: 14px;
 
     @media (max-width: 992px) {
@@ -79,8 +79,8 @@
       }
     }
 
-    .rightPanel {
-      max-height: calc(100vh - 64px);
+    .leftPanel, .rightPanel {
+      max-height: calc(100vh - 60px);
       overflow-y: auto;
 
       @media (max-width: 992px) {
@@ -119,6 +119,10 @@
         border-left: 1px solid #EEF3F1;
         border-right: none;
       }
+    }
+
+    .leftPanel {
+      padding: 12px 0;
     }
   }
 }

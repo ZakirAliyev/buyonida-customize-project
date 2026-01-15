@@ -21,12 +21,14 @@ import TextEditor from "../../components/CustomizeStoreAdminComponentsRight/Text
 import {useFormik} from "formik";
 import SectionTree from "../../components/CustomizeStoreAdminComponentsLeft/BlockItem/index.jsx";
 import BlockItem from "../../components/CustomizeStoreAdminComponentsLeft/BlockItem/index.jsx";
+import SegmentedControl from "../../components/CustomizeStoreAdminComponentsLeft/SegmentedControl/index.jsx";
 
 function HomePageInner() {
     // const {data, isLoading, isFetching} = useGetHomePageQuery();
     // const [addComponent, addState] = useAddComponentMutation();
     // const [deleteBlock, deleteState] = useDeleteBlockMutation();
     const [selectedId, setSelectedId] = useState(null);
+    const [tab, setTab] = useState("sections");
     const formik = useFormik({
         initialValues: {
             subtitle_en: "",
@@ -102,125 +104,160 @@ function HomePageInner() {
 
     return (
         <section id={"homePage"}>
-            {/*<TopLoadingBar loading={loading}/>*/}
+            <TopLoadingBar loading={loading}/>
             <HomePageNavbar/>
 
             <div className={"panelWrapper"}>
                 <div className={"panel leftPanel"}>
-                    <BlockItem
-                        id="announcement-bar"
-                        type="section"
-                        blockType="announcement"
-                        label="Announcement bar"
-                        children={[
-                            {
-                                id: "announcement",
-                                type: "block",
-                                blockType: "text",
-                                label: "Announcement",
-                            },
+                    <SegmentedControl
+                        value={tab}
+                        onChange={setTab}
+                        options={[
+                            {label: "Sections", value: "sections"},
+                            {label: "Settings", value: "settings"},
                         ]}
                     />
-
                     <BlockItem
-                        id="header"
-                        type="section"
-                        blockType="header"
-                        label="Header"
+                        id="home-page"
+                        type="page"
+                        label="Home page"
+                        onSelect={(data) => console.log("SELECTED:", data)}
                         children={[
                             {
-                                id: "logo",
-                                type: "block",
-                                blockType: "logo",
-                                label: "Logo",
-                            },
-                            {
-                                id: "menu",
-                                type: "block",
-                                blockType: "menu",
-                                label: "Menu",
+                                id: "header",
+                                type: "zone",
+                                zone: "header",
+                                label: "Header",
                                 children: [
                                     {
-                                        id: "menu-item-1",
-                                        type: "block",
-                                        blockType: "link",
-                                        label: "Menu item",
+                                        id: "header-hero",
+                                        type: "section",
+                                        zone: "header",
+                                        label: "Hero",
+                                        children: [
+                                            {
+                                                id: "header-hero-heading",
+                                                type: "block",
+                                                blockType: "heading",
+                                                label: "Heading"
+                                            },
+                                            {id: "header-hero-text", type: "block", blockType: "text", label: "Text"},
+                                            {
+                                                id: "header-hero-button",
+                                                type: "block",
+                                                blockType: "button",
+                                                label: "Button"
+                                            },
+                                        ],
                                     },
                                 ],
                             },
-                        ]}
-                    />
 
-                    <BlockItem
-                        id="main-content"
-                        type="section"
-                        blockType="page"
-                        label="Main content"
-                        children={[
                             {
-                                id: "hero-group",
-                                type: "block",
-                                blockType: "group",
-                                label: "Hero group",
+                                id: "main",
+                                type: "zone",
+                                zone: "main",
+                                label: "Main content",
                                 children: [
                                     {
-                                        id: "hero-heading",
-                                        type: "block",
-                                        blockType: "heading",
-                                        label: "Heading",
+                                        id: "main-hero",
+                                        type: "section",
+                                        zone: "main",
+                                        label: "Hero",
+                                        children: [
+                                            {id: "main-hero-image", type: "block", blockType: "text", label: "Text"},
+                                            {
+                                                id: "main-hero-heading",
+                                                type: "block",
+                                                blockType: "heading",
+                                                label: "Heading"
+                                            },
+                                            {id: "main-hero-text", type: "block", blockType: "text", label: "Text"},
+                                            {
+                                                id: "main-hero-button",
+                                                type: "block",
+                                                blockType: "button",
+                                                label: "Button"
+                                            },
+                                        ],
                                     },
+
                                     {
-                                        id: "hero-text",
-                                        type: "block",
-                                        blockType: "text",
-                                        label: "Text",
+                                        id: "featured-products",
+                                        type: "section",
+                                        zone: "main",
+                                        label: "Featured products",
+                                        children: [
+                                            {
+                                                id: "product-card",
+                                                type: "block",
+                                                blockType: "group",
+                                                label: "Product card",
+                                                children: [
+                                                    {
+                                                        id: "product-image",
+                                                        type: "block",
+                                                        blockType: "image",
+                                                        label: "Image"
+                                                    },
+                                                    {
+                                                        id: "product-title",
+                                                        type: "block",
+                                                        blockType: "heading",
+                                                        label: "Title"
+                                                    },
+                                                    {
+                                                        id: "product-price",
+                                                        type: "block",
+                                                        blockType: "price",
+                                                        label: "Price"
+                                                    },
+                                                    {
+                                                        id: "product-buy",
+                                                        type: "block",
+                                                        blockType: "buy-buttons",
+                                                        label: "Buy button"
+                                                    },
+                                                ],
+                                            },
+                                        ],
                                     },
+
                                     {
-                                        id: "hero-button",
-                                        type: "block",
-                                        blockType: "button",
-                                        label: "Button",
+                                        id: "content-text",
+                                        type: "section",
+                                        zone: "main",
+                                        label: "Rich text",
+                                        children: [
+                                            {
+                                                id: "content-paragraph",
+                                                type: "block",
+                                                blockType: "text",
+                                                label: "Paragraph"
+                                            },
+                                        ],
                                     },
                                 ],
                             },
-                            {
-                                id: "image-section",
-                                type: "block",
-                                blockType: "image",
-                                label: "Image",
-                            },
-                        ]}
-                    />
 
-                    <BlockItem
-                        id="footer"
-                        type="section"
-                        blockType="footer"
-                        label="Footer"
-                        children={[
                             {
-                                id: "footer-group",
-                                type: "block",
-                                blockType: "group",
-                                label: "Footer group",
+                                id: "footer",
+                                type: "zone",
+                                zone: "footer",
+                                label: "Footer",
                                 children: [
+                                    {id: "footer-text", type: "block", blockType: "text", label: "Text"},
                                     {
-                                        id: "copyright",
+                                        id: "footer-links",
                                         type: "block",
-                                        blockType: "copyright",
-                                        label: "Copyright",
+                                        blockType: "policy-links",
+                                        label: "Policy links"
                                     },
                                     {
-                                        id: "social-links",
+                                        id: "footer-social",
                                         type: "block",
                                         blockType: "social-media-links",
-                                        label: "Social media links",
-                                    },
-                                    {
-                                        id: "payment-icons",
-                                        type: "block",
-                                        blockType: "payment-icons",
-                                        label: "Payment icons",
+                                        label: "Social links"
                                     },
                                 ],
                             },
