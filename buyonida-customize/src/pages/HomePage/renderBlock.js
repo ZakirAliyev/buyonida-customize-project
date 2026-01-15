@@ -27,9 +27,19 @@ export function renderBlockTree(block, selectedId) {
                 : "flex-end";
 
     return `
-        <div class="section-wrapper ${block.id === selectedId ? "selected" : ""}" data-id="${block.id}">
+        <div 
+            class="section-wrapper block ${
+        block.id === selectedId ? "selected" : ""
+    }"
+            data-id="${block.id}"
+            data-kind="block"
+        >
             <div class="section-overlay"></div>
-            <button class="delete-btn" data-delete="${block.id}">×</button>
+            <button 
+                class="delete-btn"
+                data-delete-block="${block.id}"
+            >×</button>
+
             ${renderLiquid(block.template, {
         ...block.settings,
         flexDirection,

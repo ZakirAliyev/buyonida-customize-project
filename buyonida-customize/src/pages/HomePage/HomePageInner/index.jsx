@@ -2,17 +2,21 @@ import {
     useAddComponentMutation,
     useAddSectionMutation,
     useDeleteBlockMutation,
+    useDeleteSectionMutation,
     useGetHomePageQuery
 } from "../../../services/apis/pageApi.jsx";
-import {useBlockSelection} from "../useBlockSelection.js";
+
+import { useBlockSelection } from "../useBlockSelection.js";
 import SettingsPanel from "../../../components/SettingsPanel/index.jsx";
 import PreviewCanvas from "../PreviewCanvas/index.jsx";
 
 function HomePageInner() {
-    const {data, isLoading, isFetching} = useGetHomePageQuery();
+    const { data, isLoading, isFetching } = useGetHomePageQuery();
+
     const [addComponent] = useAddComponentMutation();
     const [addSection] = useAddSectionMutation();
     const [deleteBlock] = useDeleteBlockMutation();
+    const [deleteSection] = useDeleteSectionMutation();
 
     const {
         selectedId,
@@ -30,11 +34,15 @@ function HomePageInner() {
                 <div className="preview-area">
                     <button
                         onClick={() =>
-                            addComponent({type: "button", parentId: selectedId})
+                            addComponent({
+                                type: "button",
+                                parentId: selectedId
+                            })
                         }
                     >
                         + Button
                     </button>
+
                     <button
                         onClick={() => addSection("announcement_bar")}
                     >
@@ -42,14 +50,15 @@ function HomePageInner() {
                     </button>
 
                     <PreviewCanvas
-                        sections={data.sections || []}
+                        sections={data.sections}
                         selectedId={selectedId}
                         onSelect={setSelectedId}
-                        onDelete={deleteBlock}
+                        onDeleteBlock={deleteBlock}
+                        onDeleteSection={deleteSection}
                     />
                 </div>
 
-                <SettingsPanel block={selectedBlock}/>
+                <SettingsPanel block={selectedBlock} />
             </div>
         </section>
     );

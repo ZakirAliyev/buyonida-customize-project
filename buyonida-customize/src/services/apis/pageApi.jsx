@@ -5,6 +5,7 @@ export const pageApi = userApi.injectEndpoints({
         getHomePage: builder.query({
             query: () => "/page/home"
         }),
+
         addComponent: builder.mutation({
             query: ({ type, parentId }) => ({
                 url: `/page/home/block/add/${type}`,
@@ -12,78 +13,61 @@ export const pageApi = userApi.injectEndpoints({
                 body: { parentId }
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    dispatch(
-                        pageApi.util.updateQueryData(
-                            "getHomePage",
-                            undefined,
-                            () => data
-                        )
-                    );
-                } catch (e) {
-                    console.error("addComponent failed", e);
-                }
+                const { data } = await queryFulfilled;
+                dispatch(
+                    pageApi.util.updateQueryData(
+                        "getHomePage",
+                        undefined,
+                        () => data
+                    )
+                );
             }
         }),
+
         addSection: builder.mutation({
             query: (type) => ({
                 url: `/page/home/section/add/${type}`,
                 method: "POST"
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    dispatch(
-                        pageApi.util.updateQueryData(
-                            "getHomePage",
-                            undefined,
-                            () => data
-                        )
-                    );
-                } catch (e) {
-                    console.error("addSection failed", e);
-                }
+                const { data } = await queryFulfilled;
+                dispatch(
+                    pageApi.util.updateQueryData(
+                        "getHomePage",
+                        undefined,
+                        () => data
+                    )
+                );
             }
         }),
-        updateBlock: builder.mutation({
-            query: ({ id, settings }) => ({
-                url: `/page/home/block/${id}`,
-                method: "PUT",
-                body: { settings }
+
+        // ✅ DELETE SECTION
+        deleteSection: builder.mutation({
+            query: (id) => ({
+                url: `/page/home/section/${id}`,
+                method: "DELETE"
             }),
-            async onQueryStarted({ id, settings }, { dispatch, queryFulfilled }) {
+            async onQueryStarted(id, { dispatch, queryFulfilled }) {
                 const patchResult = dispatch(
                     pageApi.util.updateQueryData(
                         "getHomePage",
                         undefined,
                         (draft) => {
-                            function findBlock(blocks) {
-                                for (const b of blocks) {
-                                    if (b.id === id) return b;
-                                    if (b.children?.length) {
-                                        const found = findBlock(b.children);
-                                        if (found) return found;
-                                    }
-                                }
-                                return null;
-                            }
-
-                            const block = findBlock(draft.sections[0].blocks);
-                            if (block) {
-                                block.settings = settings;
-                            }
+                            draft.sections = draft.sections.filter(
+                                s => s.id !== id
+                            );
                         }
                     )
                 );
+
                 try {
                     await queryFulfilled;
-                } catch (e) {
-                    patchResult.undo(); // rollback
-                    console.error("updateBlock failed", e);
+                } catch {
+                    patchResult.undo();
                 }
             }
         }),
+
         deleteBlock: builder.mutation({
             query: (id) => ({
                 url: `/page/home/block/${id}`,
@@ -110,22 +94,21 @@ export const pageApi = userApi.injectEndpoints({
                         }
                     )
                 );
+
                 try {
                     await queryFulfilled;
-                } catch (e) {
+                } catch {
                     patchResult.undo();
-                    console.error("deleteBlock failed", e);
                 }
             }
         })
-
     })
 });
 
 export const {
     useGetHomePageQuery,
     useAddComponentMutation,
-    useUpdateBlockMutation,
+    useAddSectionMutation,
     useDeleteBlockMutation,
-    useAddSectionMutation
+    useDeleteSectionMutation
 } = pageApi;
