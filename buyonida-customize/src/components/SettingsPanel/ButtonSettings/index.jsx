@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useUpdateBlockMutation } from "../../../services/apis/pageApi.jsx";
 import { useDebounce } from "../../../hooks/useDebounce.js";
-import {useEditorLoading} from "../../../context/EditorLoadingContext/index.jsx";
+import { useEditorLoading } from "../../../context/EditorLoadingContext/index.jsx";
 
 function ButtonSettings({ section }) {
     const [updateBlock] = useUpdateBlockMutation();
@@ -10,35 +10,44 @@ function ButtonSettings({ section }) {
     const [localSettings, setLocalSettings] = useState(section.settings);
     const debouncedSettings = useDebounce(localSettings, 500);
 
-    const seqRef = useRef(0);
+    const isDirtyRef = useRef(false);   // 👈 ƏSAS HƏLL
     const startedRef = useRef(false);
 
+    /* ==========================
+       BLOCK CHANGE → RESET
+    ========================== */
     useEffect(() => {
         setLocalSettings(section.settings);
-        seqRef.current = 0;
+        isDirtyRef.current = false;     // 👈 seçəndə dirty DEYİL
         if (startedRef.current) {
             stop();
             startedRef.current = false;
         }
     }, [section.id]);
 
+    /* ==========================
+       AUTOSAVE (ONLY IF DIRTY)
+    ========================== */
     useEffect(() => {
-        if (!debouncedSettings) return;
+        if (!isDirtyRef.current) return;   // 🔥 PUT BURDA KƏSİLİR
 
-        const sendSeq = seqRef.current;
-
-        updateBlock({ id: section.id, settings: debouncedSettings })
-            .unwrap()
-            .finally(() => {
-                if (seqRef.current === sendSeq && startedRef.current) {
-                    stop();
-                    startedRef.current = false;
-                }
-            });
+        updateBlock({
+            id: section.id,
+            settings: debouncedSettings
+        }).finally(() => {
+            if (startedRef.current) {
+                stop();
+                startedRef.current = false;
+            }
+        });
     }, [debouncedSettings]);
 
-    const bump = () => {
-        seqRef.current += 1;
+    /* ==========================
+       USER CHANGE HELPER
+    ========================== */
+    const markDirty = () => {
+        isDirtyRef.current = true;
+
         if (!startedRef.current) {
             start();
             startedRef.current = true;
@@ -51,9 +60,9 @@ function ButtonSettings({ section }) {
 
             <label>Label</label>
             <input
-                value={localSettings.text}
+                value={localSettings.text || ""}
                 onChange={(e) => {
-                    bump();
+                    markDirty();
                     setLocalSettings({ ...localSettings, text: e.target.value });
                 }}
             />
@@ -62,7 +71,7 @@ function ButtonSettings({ section }) {
             <input
                 value={localSettings.link || ""}
                 onChange={(e) => {
-                    bump();
+                    markDirty();
                     setLocalSettings({ ...localSettings, link: e.target.value });
                 }}
             />
@@ -72,7 +81,7 @@ function ButtonSettings({ section }) {
                     type="checkbox"
                     checked={localSettings.newTab || false}
                     onChange={(e) => {
-                        bump();
+                        markDirty();
                         setLocalSettings({ ...localSettings, newTab: e.target.checked });
                     }}
                 />
@@ -83,7 +92,7 @@ function ButtonSettings({ section }) {
             <select
                 value={localSettings.style || "primary"}
                 onChange={(e) => {
-                    bump();
+                    markDirty();
                     setLocalSettings({ ...localSettings, style: e.target.value });
                 }}
             >

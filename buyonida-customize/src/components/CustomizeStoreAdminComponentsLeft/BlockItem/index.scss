@@ -94,4 +94,31 @@
     flex-direction: column;
     gap: 2px;
   }
+
+  .deleteSectionBtn {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 6px;
+
+    &:hover {
+      color: #ff4d4f;
+    }
+  }
+
+  .deleteBlockBtn {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
 }

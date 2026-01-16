@@ -1,19 +1,20 @@
 import "./index.scss";
-import {useState} from "react";
-import {blockIcons} from "/src/assets/block-icons/map.js";
-import {resolveSectionIcon} from "/src/assets/section-icons/resolveSectionIcon.js";
+import { useState } from "react";
+import { blockIcons } from "/src/assets/block-icons/map.js";
+import { resolveSectionIcon } from "/src/assets/section-icons/resolveSectionIcon.js";
 import chevron from "/src/assets/icons/chevron1.svg";
 
 function BlockItem({
                        id,
                        parentId = null,
-                       type,
+                       type,              // page | zone | section | block
                        zone = "main",
-                       blockType = null,
+                       blockType = null,  // button | group | text ...
                        label,
                        children = [],
                        isActive = false,
                        onSelect,
+                       onDelete
                    }) {
     const isContainer = Array.isArray(children) && children.length > 0;
 
@@ -50,6 +51,7 @@ function BlockItem({
         }
     };
 
+    // PAGE node render olunmur, children-i qaytarır
     if (type === "page") {
         return (
             <>
@@ -59,6 +61,7 @@ function BlockItem({
                         {...child}
                         parentId={id}
                         onSelect={onSelect}
+                        onDelete={onDelete}
                     />
                 ))}
             </>
@@ -91,6 +94,32 @@ function BlockItem({
                 )}
 
                 <span className="blockLabel">{label}</span>
+
+                {/* ✅ SECTION DELETE (announcement bar və digərləri) */}
+                {type === "section" && (
+                    <button
+                        className="deleteSectionBtn"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete?.({ id, type: "section" });
+                        }}
+                    >
+                        ×
+                    </button>
+                )}
+
+                {/* ✅ BLOCK DELETE (button, text, group...) */}
+                {type === "block" && (
+                    <button
+                        className="deleteBlockBtn"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete?.({ id, type: "block" });
+                        }}
+                    >
+                        ×
+                    </button>
+                )}
             </div>
 
             {expanded && isContainer && (
@@ -101,6 +130,7 @@ function BlockItem({
                             {...child}
                             parentId={id}
                             onSelect={onSelect}
+                            onDelete={onDelete}
                         />
                     ))}
                 </div>
